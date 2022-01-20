@@ -7,11 +7,11 @@ on:
   # Triggers the workflow on push or pull request events but only for the vivek branch
   push:
     branches: 
-      - 'kevin' 
+      - 'vive' 
     tags:
       - 'v*'
   pull_request:
-    branches: [ kevin ]
+    branches: [ vive ]
          
 
   # Allows you to run this workflow manually from the Actions tab
@@ -48,3 +48,6 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_VIVEK }}/simplewhale:latest
+          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_VIVEK }}/simplewhale:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_VIVEK }}/simplewhale:buildcache,mode=max
+
